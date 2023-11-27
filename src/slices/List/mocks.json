@@ -1,0 +1,20 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nulla anim ipsum eu voluptate fugiat consequat deserunt commodo."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

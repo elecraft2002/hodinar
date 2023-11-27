@@ -1,0 +1,77 @@
+{
+  "id": "watches",
+  "label": "Watches",
+  "format": "custom",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Description",
+          "placeholder": ""
+        }
+      },
+      "image1": {
+        "type": "Image",
+        "config": {
+          "label": "Image1",
+          "constraint": {},
+          "thumbnails": [
+            {
+              "name": "Preview",
+              "width": 256,
+              "height": 256
+            }
+          ]
+        }
+      },
+      "image2": {
+        "type": "Image",
+        "config": {
+          "label": "Image2",
+          "constraint": {},
+          "thumbnails": [
+            {
+              "name": "Preview",
+              "width": 256,
+              "height": 256
+            }
+          ]
+        }
+      },
+      "rating": {
+        "type": "Select",
+        "config": {
+          "label": "Rating",
+          "placeholder": "",
+          "options": ["5", "4", "3", "2", "1", "0"],
+          "default_value": "5"
+        }
+      },
+      "price": {
+        "type": "Text",
+        "config": {
+          "label": "Price",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}
