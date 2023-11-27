@@ -36,8 +36,8 @@
           "thumbnails": [
             {
               "name": "Preview",
-              "width": 256,
-              "height": 256
+              "width": 400,
+              "height": 300
             }
           ]
         }
@@ -50,8 +50,8 @@
           "thumbnails": [
             {
               "name": "Preview",
-              "width": 256,
-              "height": 256
+              "width": 400,
+              "height": 300
             }
           ]
         }
@@ -70,6 +70,13 @@
         "config": {
           "label": "Price",
           "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
         }
       }
     }

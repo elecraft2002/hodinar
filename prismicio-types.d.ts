@@ -4,7 +4,11 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = ListSlice | HeroSlice | TextSlice;
+type HomepageDocumentDataSlicesSlice =
+  | ButtonSlice
+  | ListSlice
+  | HeroSlice
+  | TextSlice;
 
 /**
  * Content for Homepage documents
@@ -202,6 +206,8 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
+type WatchesDocumentDataSlicesSlice = never;
+
 /**
  * Content for Watches documents
  */
@@ -272,6 +278,17 @@ interface WatchesDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   price: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Watches*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: watches.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<WatchesDocumentDataSlicesSlice>;
 }
 
 /**
@@ -295,6 +312,58 @@ export type AllDocumentTypes =
   | PageDocument
   | SettingsDocument
   | WatchesDocument;
+
+/**
+ * Primary content in *Button → Primary*
+ */
+export interface ButtonSliceDefaultPrimary {
+  /**
+   * Button Text field in *Button → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *Button → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for Button Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ButtonSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ButtonSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Button*
+ */
+type ButtonSliceVariation = ButtonSliceDefault;
+
+/**
+ * Button Shared Slice
+ *
+ * - **API ID**: `button`
+ * - **Description**: Button
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ButtonSlice = prismic.SharedSlice<"button", ButtonSliceVariation>;
 
 /**
  * Primary content in *Hero → Primary*
@@ -441,14 +510,14 @@ export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
  */
 export interface ListSliceDefaultPrimary {
   /**
-   * Description field in *List → Primary*
+   * Max watches field in *List → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Number
    * - **Placeholder**: *None*
-   * - **API ID Path**: list.primary.description
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **API ID Path**: list.primary.max_watches
+   * - **Documentation**: https://prismic.io/docs/field#number
    */
-  description: prismic.RichTextField;
+  max_watches: prismic.NumberField;
 }
 
 /**
@@ -541,7 +610,12 @@ declare module "@prismicio/client" {
       SettingsDocumentDataNavigationItem,
       WatchesDocument,
       WatchesDocumentData,
+      WatchesDocumentDataSlicesSlice,
       AllDocumentTypes,
+      ButtonSlice,
+      ButtonSliceDefaultPrimary,
+      ButtonSliceVariation,
+      ButtonSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceDefaultItem,

@@ -3,16 +3,10 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"description": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Nulla anim ipsum eu voluptate fugiat consequat deserunt commodo."
-						}
-					}
-				]
+			"max_watches": {
+				"__TYPE__": "FieldContent",
+				"value": "76",
+				"type": "Number"
 			}
 		},
 		"items": []
