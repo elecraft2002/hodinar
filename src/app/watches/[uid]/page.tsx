@@ -30,17 +30,19 @@ export default async function Page({ params }: { params: Params }) {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="flex -mx-2 mb-4">
-                <Button>
-                  <Link
-                    href={
-                      prismic.asLink(page)?.replace("watches", "form") || ""
-                    }
-                  >
-                    Mám zájem
-                  </Link>
-                </Button>
-              </div>
+              {page.data.availability !== "Sold" && (
+                <div className="flex -mx-2 mb-4">
+                  <Button>
+                    <Link
+                      href={
+                        prismic.asLink(page)?.replace("watches", "form") || ""
+                      }
+                    >
+                      Mám zájem
+                    </Link>
+                  </Button>
+                </div>
+              )}
             </div>
             <div className="md:flex-1 px-4">
               <h2 className="text-2xl font-bold  mb-2">
@@ -66,15 +68,17 @@ export default async function Page({ params }: { params: Params }) {
                 </span>
               </div>
               <div className="w-full my-4 flex justify-center">
-                <Button>
-                  <Link
-                    href={
-                      prismic.asLink(page)?.replace("watches", "form") || ""
-                    }
-                  >
-                    Mám zájem
-                  </Link>
-                </Button>
+                {page.data.availability !== "Sold" && (
+                  <Button>
+                    <Link
+                      href={
+                        prismic.asLink(page)?.replace("watches", "form") || ""
+                      }
+                    >
+                      Mám zájem
+                    </Link>
+                  </Button>
+                )}
               </div>
               <ul>
                 {page.data.info.map((item, i) => {

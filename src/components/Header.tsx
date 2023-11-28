@@ -18,7 +18,7 @@ export default function Header({ settings }: { settings: SettingsDocument }) {
   });
   return (
     <header className="bg-primary/80 text-secondary md:px-10 fixed w-screen z-[99999999] backdrop-blur-2xl">
-      <nav className={clsx("transition-all", isAtTop && " py-5")}>
+      <nav className={clsx("transition-all", isAtTop && " md:py-5")}>
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link
             href="/"

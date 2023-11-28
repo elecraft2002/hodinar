@@ -24,7 +24,13 @@ export default async function Page({ params }: { params: Params }) {
     <>
       <div className="grid md:grid-cols-2">
         <div className="m-4 md:flex md:items-center">
-          <Form />
+          {page.data.availability === "Sold" ? (
+            <h2 className="text-center w-full font-semibold text-3xl">
+              Zboží není k dispozici.
+            </h2>
+          ) : (
+            <Form />
+          )}
         </div>
         <div className="md:h-screen">
           <PrismicNextImage

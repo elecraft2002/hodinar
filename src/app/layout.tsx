@@ -12,6 +12,7 @@ import Header from "@/components/Header";
 import Head from "next/head";
 import * as prismic from "@prismicio/client";
 import Background from "@/components/Background";
+import Footer from "@/components/Footer";
 
 export async function generateMetadata() {
   const client = createClient();
@@ -36,13 +37,13 @@ export default async function RootLayout({
         <Header settings={settings} />
         {/* <Background/> */}
         <main className="pt-28">{children}</main>
-        <Footer />
+        <Footer settings={settings} />
         <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>
   );
 }
-
+/* 
 async function Footer() {
   const client = createClient();
   const settings = await client.getSingle("settings");
@@ -56,3 +57,4 @@ async function Footer() {
     </footer>
   );
 }
+ */
