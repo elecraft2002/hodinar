@@ -11,6 +11,7 @@ import { SettingsDocument } from "../../prismicio-types";
 import Header from "@/components/Header";
 import Head from "next/head";
 import * as prismic from "@prismicio/client";
+import Background from "@/components/Background";
 
 export async function generateMetadata() {
   const client = createClient();
@@ -33,7 +34,8 @@ export default async function RootLayout({
     <html lang="cs">
       <body className="bg-primary text-secondary min-h-screen flex flex-col justify-between">
         <Header settings={settings} />
-        {children}
+        {/* <Background/> */}
+        <main className="pt-28">{children}</main>
         <Footer />
         <PrismicPreview repositoryName={repositoryName} />
       </body>

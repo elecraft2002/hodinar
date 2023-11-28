@@ -64,7 +64,12 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = HeroSlice | TextSlice;
+type PageDocumentDataSlicesSlice =
+  | ListSlice
+  | GallerySlice
+  | ButtonSlice
+  | HeroSlice
+  | TextSlice;
 
 /**
  * Content for Page documents
@@ -206,7 +211,37 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-type WatchesDocumentDataSlicesSlice = never;
+/**
+ * Item in *Watches → Info*
+ */
+export interface WatchesDocumentDataInfoItem {
+  /**
+   * Feature field in *Watches → Info*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: watches.info[].feature
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  feature: prismic.KeyTextField;
+
+  /**
+   * Info field in *Watches → Info*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: watches.info[].info
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  info: prismic.KeyTextField;
+}
+
+type WatchesDocumentDataSlicesSlice =
+  | GallerySlice
+  | TextSlice
+  | ButtonSlice
+  | ListSlice
+  | HeroSlice;
 
 /**
  * Content for Watches documents
@@ -224,15 +259,15 @@ interface WatchesDocumentData {
   title: prismic.RichTextField;
 
   /**
-   * Meta Description field in *Watches*
+   * Description field in *Watches*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: watches.meta_description
+   * - **API ID Path**: watches.description
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  meta_description: prismic.KeyTextField;
+  description: prismic.RichTextField;
 
   /**
    * Image1 field in *Watches*
@@ -243,7 +278,7 @@ interface WatchesDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  image1: prismic.ImageField<"Preview">;
+  image1: prismic.ImageField<"Preview" | "medium">;
 
   /**
    * Image2 field in *Watches*
@@ -278,6 +313,29 @@ interface WatchesDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   price: prismic.KeyTextField;
+
+  /**
+   * Availability field in *Watches*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Available
+   * - **API ID Path**: watches.availability
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  availability: prismic.SelectField<"Available" | "Sold", "filled">;
+
+  /**
+   * Info field in *Watches*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: watches.info[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  info: prismic.GroupField<Simplify<WatchesDocumentDataInfoItem>>;
 
   /**
    * Slice Zone field in *Watches*
@@ -364,6 +422,51 @@ type ButtonSliceVariation = ButtonSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type ButtonSlice = prismic.SharedSlice<"button", ButtonSliceVariation>;
+
+/**
+ * Primary content in *Gallery → Items*
+ */
+export interface GallerySliceDefaultItem {
+  /**
+   * Image field in *Gallery → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<"Small" | "Medium">;
+}
+
+/**
+ * Default variation for Gallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GallerySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<GallerySliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Gallery*
+ */
+type GallerySliceVariation = GallerySliceDefault;
+
+/**
+ * Gallery Shared Slice
+ *
+ * - **API ID**: `gallery`
+ * - **Description**: Gallery
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GallerySlice = prismic.SharedSlice<
+  "gallery",
+  GallerySliceVariation
+>;
 
 /**
  * Primary content in *Hero → Primary*
@@ -610,12 +713,17 @@ declare module "@prismicio/client" {
       SettingsDocumentDataNavigationItem,
       WatchesDocument,
       WatchesDocumentData,
+      WatchesDocumentDataInfoItem,
       WatchesDocumentDataSlicesSlice,
       AllDocumentTypes,
       ButtonSlice,
       ButtonSliceDefaultPrimary,
       ButtonSliceVariation,
       ButtonSliceDefault,
+      GallerySlice,
+      GallerySliceDefaultItem,
+      GallerySliceVariation,
+      GallerySliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceDefaultItem,

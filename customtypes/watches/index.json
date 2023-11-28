@@ -21,11 +21,13 @@
           "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
-      "meta_description": {
-        "type": "Text",
+      "description": {
+        "type": "StructuredText",
         "config": {
-          "label": "Meta Description",
-          "placeholder": ""
+          "label": "Description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
       "image1": {
@@ -38,6 +40,11 @@
               "name": "Preview",
               "width": 400,
               "height": 300
+            },
+            {
+              "name": "medium",
+              "width": 800,
+              "height": 600
             }
           ]
         }
@@ -72,11 +79,58 @@
           "placeholder": ""
         }
       },
+      "availability": {
+        "type": "Select",
+        "config": {
+          "label": "Availability",
+          "placeholder": "",
+          "options": ["Available", "Sold"],
+          "default_value": "Available"
+        }
+      },
+      "info": {
+        "type": "Group",
+        "config": {
+          "label": "Info",
+          "fields": {
+            "feature": {
+              "type": "Text",
+              "config": {
+                "label": "Feature",
+                "placeholder": ""
+              }
+            },
+            "info": {
+              "type": "Text",
+              "config": {
+                "label": "Info",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "gallery": {
+              "type": "SharedSlice"
+            },
+            "text": {
+              "type": "SharedSlice"
+            },
+            "button": {
+              "type": "SharedSlice"
+            },
+            "list": {
+              "type": "SharedSlice"
+            },
+            "hero": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     }

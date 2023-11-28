@@ -18,7 +18,7 @@ export default function Button({
           type === "primary" &&
             "bg-secondary text-primary px-6 py-2 rounded-lg transition-all hover:bg-transparent hover:text-secondary border border-secondary hover:scale-105",
           type === "secondary" &&
-            "rounded border border-primary px-9 py-2 transition-all hover:bg-primary hover:text-secondary",
+            "rounded border border-secondary px-9 py-2 transition-all hover:bg-primary hover:border-primary hover:text-secondary",
           type === "tertiary" && "underline",
           className
         )}
