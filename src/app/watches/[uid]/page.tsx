@@ -67,7 +67,7 @@ export default async function Page({ params }: { params: Params }) {
               </div>
               <div className="w-full my-4 flex justify-center">
                 <Button>
-                <Link
+                  <Link
                     href={
                       prismic.asLink(page)?.replace("watches", "form") || ""
                     }
@@ -122,7 +122,7 @@ export default async function Page({ params }: { params: Params }) {
           <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
             {page.data.info.map((item, i) => {
               return (
-                <div className="border-t border-gray-200 pt-4">
+                <div className="border-t border-gray-200 pt-4" key={i}>
                   <dt className="font-medium">{item.feature}</dt>
                   <dd className="mt-2 text-sm opacity-70">{item.info}</dd>
                 </div>
@@ -131,22 +131,6 @@ export default async function Page({ params }: { params: Params }) {
           </dl>
         </div>
       </div>
-
-      {/*  <div className="flex justify-center w-full" id="info">
-        <ul className="max-w-5xl p-4 w-full">
-          {page.data.info.map((item, i) => {
-            return (
-              <li
-                key={i}
-                className="w-full flex justify-between flex-wrap border-b border-secondary/20 pt-8 first-of-type:pt-4 gap-4 hover:bg-secondary/10 transition-all"
-              >
-                <p>{item.feature}</p>
-                <p>{item.info}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </div> */}
     </>
   );
 }
