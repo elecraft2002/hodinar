@@ -31,7 +31,15 @@ export default async function Page({ params }: { params: Params }) {
                 />
               </div>
               <div className="flex -mx-2 mb-4">
-                <Button>Mám zájem</Button>
+                <Button>
+                  <Link
+                    href={
+                      prismic.asLink(page)?.replace("watches", "form") || ""
+                    }
+                  >
+                    Mám zájem
+                  </Link>
+                </Button>
               </div>
             </div>
             <div className="md:flex-1 px-4">
@@ -59,7 +67,13 @@ export default async function Page({ params }: { params: Params }) {
               </div>
               <div className="w-full my-4 flex justify-center">
                 <Button>
-                  <Link href={"#info"}>Mám zájem</Link>
+                <Link
+                    href={
+                      prismic.asLink(page)?.replace("watches", "form") || ""
+                    }
+                  >
+                    Mám zájem
+                  </Link>
                 </Button>
               </div>
               <ul>

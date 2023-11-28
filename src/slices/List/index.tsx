@@ -8,6 +8,8 @@ import Stars from "@/components/Stars";
 import Button from "@/components/Button";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import Link from "next/link";
+import * as prismic from "@prismicio/client";
 
 const Card = ({ item }: { item: WatchesDocument }) => {
   const [isHovered, setHover] = useState<boolean>(false);
@@ -62,7 +64,13 @@ const Card = ({ item }: { item: WatchesDocument }) => {
           </div>
           <div className="flex items-center gap-4 justify-between">
             <Button>
-              <PrismicNextLink document={item}>Mám zájem</PrismicNextLink>
+            <Link
+                    href={
+                      prismic.asLink(item)?.replace("watches", "form") || ""
+                    }
+                  >
+                    Mám zájem
+                  </Link>
             </Button>
             <Button>
               <PrismicNextLink document={item}>Více</PrismicNextLink>
