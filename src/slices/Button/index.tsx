@@ -17,11 +17,9 @@ const Button = ({ slice }: ButtonProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <ButtonComponent>
-        <PrismicNextLink field={slice.primary.button_link}>
-          {slice.primary.button_text}
-        </PrismicNextLink>
-      </ButtonComponent>
+      <PrismicNextLink field={slice.primary.button_link}>
+        <ButtonComponent>{slice.primary.button_text}</ButtonComponent>
+      </PrismicNextLink>
     </section>
   );
 };

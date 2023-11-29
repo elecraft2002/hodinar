@@ -7,7 +7,6 @@ import { components } from "@/slices";
 import * as prismic from "@prismicio/client";
 import Button from "@/components/Button";
 import { PrismicNextImage } from "@prismicio/next";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Stars from "@/components/Stars";
 
@@ -32,15 +31,13 @@ export default async function Page({ params }: { params: Params }) {
               </div>
               {page.data.availability !== "Sold" && (
                 <div className="flex -mx-2 mb-4">
-                  <Button>
-                    <Link
-                      href={
-                        prismic.asLink(page)?.replace("watches", "form") || ""
-                      }
-                    >
-                      Mám zájem
-                    </Link>
-                  </Button>
+                  <Link
+                    href={
+                      prismic.asLink(page)?.replace("watches", "form") || ""
+                    }
+                  >
+                    <Button>Mám zájem</Button>
+                  </Link>
                 </div>
               )}
             </div>
@@ -69,15 +66,13 @@ export default async function Page({ params }: { params: Params }) {
               </div>
               <div className="w-full my-4 flex justify-center">
                 {page.data.availability !== "Sold" && (
-                  <Button>
-                    <Link
-                      href={
-                        prismic.asLink(page)?.replace("watches", "form") || ""
-                      }
-                    >
-                      Mám zájem
-                    </Link>
-                  </Button>
+                  <Link
+                    href={
+                      prismic.asLink(page)?.replace("watches", "form") || ""
+                    }
+                  >
+                    <Button>Mám zájem</Button>
+                  </Link>
                 )}
               </div>
               <ul>
@@ -96,9 +91,9 @@ export default async function Page({ params }: { params: Params }) {
               </ul>
               {page.data.info.length > 3 && (
                 <div className="w-full my-4 flex justify-center">
-                  <Button type="tertiary">
-                    <Link href={"#info"}>Více info</Link>
-                  </Button>
+                  <Link href={"#info"}>
+                    <Button type="tertiary">Více info</Button>
+                  </Link>
                 </div>
               )}
               <div>

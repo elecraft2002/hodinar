@@ -19,7 +19,6 @@ export default async function Page({ params }: { params: Params }) {
   const page = await client
     .getByUID("watches", params.uid)
     .catch(() => notFound());
-  const settings = await client.getSingle("settings");
   return (
     <>
       <div className="grid md:grid-cols-2">

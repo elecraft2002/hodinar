@@ -64,17 +64,15 @@ const Card = ({ item }: { item: WatchesDocument }) => {
           </div>
           <div className="flex items-center gap-4 justify-between">
             {item.data.availability !== "Sold" && (
-              <Button>
-                <Link
-                  href={prismic.asLink(item)?.replace("watches", "form") || ""}
-                >
-                  Mám zájem
-                </Link>
-              </Button>
+              <Link
+                href={prismic.asLink(item)?.replace("watches", "form") || ""}
+              >
+                <Button>Mám zájem</Button>
+              </Link>
             )}
-            <Button>
-              <PrismicNextLink document={item}>Více</PrismicNextLink>
-            </Button>
+            <PrismicNextLink document={item}>
+              <Button>Více</Button>
+            </PrismicNextLink>
           </div>
         </div>
       </div>
