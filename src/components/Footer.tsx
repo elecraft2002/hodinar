@@ -13,7 +13,7 @@ export default function Footer({ settings }: { settings: SettingsDocument }) {
             href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            <PrismicNextImage
+            <PrismicNextImage  
               className="h-8"
               field={settings.data.logo.Small}
             />
