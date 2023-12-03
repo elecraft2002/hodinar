@@ -8,8 +8,8 @@ import { notFound } from "next/navigation";
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
-  // const page = await client.getSingle("homepage");
-  const page = { data: { title: null, meta_description: "xdd" } };
+  const page = await client.getSingle("homepage");
+  // const page = { data: { title: null, meta_description: "xdd" } };
   const settings = await client.getSingle("settings");
 
   return {
@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
   const client = createClient();
-  const page = await client.getSingle("homepage").catch(() => notFound());
+  const page = await client.getSingle("homepage");
   const watches = await client.getAllByType("watches");
 
   return (
