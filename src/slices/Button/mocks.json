@@ -14,6 +14,11 @@
 					"__TYPE__": "ExternalLink",
 					"url": "http://twitter.com"
 				}
+			},
+			"type": {
+				"__TYPE__": "FieldContent",
+				"value": "primary",
+				"type": "Select"
 			}
 		},
 		"items": []

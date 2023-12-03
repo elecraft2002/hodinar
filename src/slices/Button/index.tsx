@@ -12,13 +12,17 @@ export type ButtonProps = SliceComponentProps<Content.ButtonSlice>;
  * Component for "Button" Slices.
  */
 const Button = ({ slice }: ButtonProps): JSX.Element => {
+  console.log();
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="flex justify-center py-8"
     >
       <PrismicNextLink field={slice.primary.button_link}>
-        <ButtonComponent>{slice.primary.button_text}</ButtonComponent>
+        <ButtonComponent type={slice.primary.type}>
+          {slice.primary.button_text}
+        </ButtonComponent>
       </PrismicNextLink>
     </section>
   );

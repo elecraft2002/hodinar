@@ -30,8 +30,15 @@ export default async function Page({ params }: { params: Params }) {
   const page = await client
     .getByUID("page", params.uid)
     .catch(() => notFound());
+  const watches = await client.getAllByType("watches");
 
-  return <SliceZone slices={page.data.slices} components={components} />;
+  return (
+    <SliceZone
+      slices={page.data.slices}
+      components={components}
+      context={{ watches }}
+    />
+  );
 }
 
 export async function generateStaticParams() {

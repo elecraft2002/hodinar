@@ -103,8 +103,10 @@ const List = ({ slice, context }: ListPropsContext): JSX.Element => {
         <PrismicRichText field={slice.primary.description} />
       </span> */}
       {context.watches && (
-        <ul>
+        <ul className="flex flex-wrap gap-8 justify-center">
           {context.watches.map((item: WatchesDocument, i: number) => {
+            if (slice.primary.max_watches && i >= slice.primary.max_watches)
+              return null;
             return (
               <li key={i}>
                 <Card item={item} />
