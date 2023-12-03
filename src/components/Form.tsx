@@ -10,7 +10,7 @@ export type FormData = {
   message: string;
 };
 
-export default async function Form() {
+export default /* async */ function Form() {
   const { register, handleSubmit } = useForm<FormData>();
 
   function onSubmit(data: FormData) {
