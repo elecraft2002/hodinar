@@ -19,7 +19,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
   return (
     <Bounded>
       <div
-        className={clsx(
+        className={clsx("max-h-[80vh]",
           slice.variation === "default" &&
             "mx-auto grid w-full max-w-5xl items-center gap-12 md:grid-cols-2 md:gap-20",
           slice.variation === "heroFullscreen" &&
@@ -74,7 +74,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             field={slice.primary.image}
             sizes="100vw"
             priority={true}
-            className="w-full rounded-xl bg-slate-700"
+            className="w-full rounded-xl bg-slate-700 max-h-[80vh]"
           />
         </motion.div>
       </div>

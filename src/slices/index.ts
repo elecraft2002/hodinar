@@ -4,8 +4,10 @@ import dynamic from "next/dynamic";
 
 export const components = {
   button: dynamic(() => import("./Button")),
+  features: dynamic(() => import("./Features")),
   gallery: dynamic(() => import("./Gallery")),
   hero: dynamic(() => import("./Hero")),
+  image: dynamic(() => import("./Image")),
   list: dynamic(() => import("./List")),
   text: dynamic(() => import("./Text")),
 };

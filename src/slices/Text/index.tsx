@@ -1,5 +1,7 @@
+"use client"
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { Fade } from "react-awesome-reveal";
 
 /**
  * Props for `Text`.
@@ -12,7 +14,7 @@ export type TextProps = SliceComponentProps<Content.TextSlice>;
 const Text = ({ slice }: TextProps): JSX.Element => {
   return (
     <section className="px-6 py-28 md:px-10">
-      <div className="mx-auto grid w-full max-w-prose gap-6">
+      <Fade delay={500} triggerOnce className="mx-auto grid w-full max-w-prose gap-6">
         <PrismicRichText
           field={slice.primary.text}
           components={{
@@ -28,7 +30,7 @@ const Text = ({ slice }: TextProps): JSX.Element => {
             ),
           }}
         />
-      </div>
+      </Fade>
     </section>
   );
 };
