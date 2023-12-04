@@ -34,7 +34,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         >
           <PrismicRichText
             field={slice.primary.text}
-            components={{
+            /* components={{
               heading3: ({ children }) => (
                 <p className="text-sm font-semibold uppercase tracking-widest text-slate-500">
                   {children}
@@ -45,7 +45,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
                   {children}
                 </h1>
               ),
-            }}
+            }} */
           />
           {slice.items.length > 0 ? (
             <ul className="flex flex-wrap gap-4">

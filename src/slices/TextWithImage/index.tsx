@@ -15,7 +15,12 @@ export type TextWithImageProps =
  */
 const TextWithImage = ({ slice }: TextWithImageProps): JSX.Element => {
   return (
-    <Bounded as="section" className="">
+    <Bounded
+      as="section"
+      className=""
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+    >
       <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-16">
         <div className="relative max-w-xs md:col-span-5 md:max-w-none">
           <div className="absolute -left-6 -top-6 w-2/3">
@@ -23,7 +28,7 @@ const TextWithImage = ({ slice }: TextWithImageProps): JSX.Element => {
           </div>
           {prismic.isFilled.image(slice.primary.image) && (
             <PrismicNextImage
-              field={slice.primary.image}
+              field={slice.primary.image.Medium}
               sizes="100vw"
               className="relative w-full"
             />

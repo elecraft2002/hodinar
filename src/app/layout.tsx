@@ -2,7 +2,12 @@ import "./globals.css";
 
 import Link from "next/link";
 import { asText } from "@prismicio/client";
-import { PrismicText } from "@prismicio/react";
+import {
+  JSXFunctionSerializer,
+  JSXMapSerializer,
+  PrismicProvider,
+  PrismicText,
+} from "@prismicio/react";
 import { PrismicNextLink, PrismicPreview } from "@prismicio/next";
 
 import { createClient, repositoryName } from "@/prismicio";

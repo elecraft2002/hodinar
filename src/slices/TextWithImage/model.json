@@ -23,9 +23,15 @@
         "image": {
           "type": "Image",
           "config": {
+            "label": "Image",
             "constraint": {},
-            "thumbnails": [],
-            "label": "Image"
+            "thumbnails": [
+              {
+                "name": "Medium",
+                "width": 600,
+                "height": null
+              }
+            ]
           }
         }
       },

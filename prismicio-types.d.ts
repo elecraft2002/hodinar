@@ -826,7 +826,7 @@ export interface TextWithImageSliceDefaultPrimary {
    * - **API ID Path**: text_with_image.primary.image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  image: prismic.ImageField<never>;
+  image: prismic.ImageField<"Medium">;
 }
 
 /**
