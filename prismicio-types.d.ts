@@ -152,7 +152,7 @@ interface ReviewDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  image: prismic.ImageField<never>;
+  image: prismic.ImageField<"small">;
 
   /**
    * Text field in *Review*

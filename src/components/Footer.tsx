@@ -21,7 +21,7 @@ export default function Footer({ settings }: { settings: SettingsDocument }) {
               {prismic.asText(settings.data.site_title)}
             </span>
           </Link>
-          <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+          <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400 gap-4">
             {settings.data.navigation.map((item) => (
               <li key={item.label}>
                 <PrismicNextLink field={item.link}>

@@ -28,7 +28,13 @@
           "constraint": {
             "width": 200
           },
-          "thumbnails": []
+          "thumbnails": [
+            {
+              "name": "small",
+              "width": 50,
+              "height": 50
+            }
+          ]
         }
       },
       "text": {

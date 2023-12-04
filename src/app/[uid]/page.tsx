@@ -31,12 +31,13 @@ export default async function Page({ params }: { params: Params }) {
     .getByUID("page", params.uid)
     .catch(() => notFound());
   const watches = await client.getAllByType("watches");
+  const reviews = await client.getAllByType("review");
 
   return (
     <SliceZone
       slices={page.data.slices}
       components={components}
-      context={{ watches }}
+      context={{ watches,reviews }}
     />
   );
 }

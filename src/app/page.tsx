@@ -22,12 +22,13 @@ export default async function Home() {
   const client = createClient();
   const page = await client.getSingle("homepage");
   const watches = await client.getAllByType("watches");
+  const reviews = await client.getAllByType("review");
 
   return (
     <SliceZone
       slices={page.data.slices}
       components={components}
-      context={{ watches }}
+      context={{ watches,reviews }}
     />
   );
 }

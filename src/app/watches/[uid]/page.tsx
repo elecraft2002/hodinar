@@ -18,6 +18,7 @@ export default async function Page({ params }: { params: Params }) {
     .getByUID("watches", params.uid)
     .catch(() => notFound());
   const watches = await client.getAllByType("watches");
+  const reviews = await client.getAllByType("review");
   return (
     <>
       <div className="py-8">
@@ -111,7 +112,7 @@ export default async function Page({ params }: { params: Params }) {
       <SliceZone
         slices={page.data.slices}
         components={components}
-        context={{ watches }}
+        context={{ watches, reviews }}
       />
       <div id="info">
         <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
