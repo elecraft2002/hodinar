@@ -16,7 +16,7 @@ export default {
         title: ["Abril Fatface", "serif"],
       },
       colors: {
-        primary: "#071330",
+        primary: "#010506",
         secondary: "#ffff",
         tertiary: "#FFD700",
       },

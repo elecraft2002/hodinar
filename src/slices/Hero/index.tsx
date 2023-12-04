@@ -19,7 +19,8 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
   return (
     <Bounded>
       <div
-        className={clsx("max-h-[80vh]",
+        className={clsx(
+          "max-h-[80vh]",
           slice.variation === "default" &&
             "mx-auto grid w-full max-w-5xl items-center gap-12 md:grid-cols-2 md:gap-20",
           slice.variation === "heroFullscreen" &&
@@ -32,21 +33,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             slice.variation === "heroFullscreen" && "absolute z-10"
           )}
         >
-          <PrismicRichText
-            field={slice.primary.text}
-            /* components={{
-              heading3: ({ children }) => (
-                <p className="text-sm font-semibold uppercase tracking-widest text-slate-500">
-                  {children}
-                </p>
-              ),
-              heading1: ({ children }) => (
-                <h1 className="max-w-lg text-6xl font-semibold text-white">
-                  {children}
-                </h1>
-              ),
-            }} */
-          />
+          <PrismicRichText field={slice.primary.text} />
           {slice.items.length > 0 ? (
             <ul className="flex flex-wrap gap-4">
               {slice.items.map((item) => (
@@ -69,12 +56,13 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             delay: 0.2,
             ease: [0, 0.71, 0.2, 1.01],
           }}
+          className="max-h-[80vh] overflow-hidden"
         >
           <PrismicNextImage
             field={slice.primary.image}
             sizes="100vw"
             priority={true}
-            className="w-full rounded-xl bg-slate-700 max-h-[80vh]"
+            className="w-full rounded-xl h-full object-cover"
           />
         </motion.div>
       </div>
