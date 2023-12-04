@@ -77,7 +77,7 @@ export default async function Page({ params }: { params: Params }) {
                   </Link>
                 )}
               </div>
-              <ul>
+              {/* <ul>
                 {page.data.info.map((item, i) => {
                   if (i > 3) return null;
                   return (
@@ -90,14 +90,14 @@ export default async function Page({ params }: { params: Params }) {
                     </li>
                   );
                 })}
-              </ul>
-              {page.data.info.length > 3 && (
+              </ul> */}
+              {/* {page.data.info.length > 3 && (
                 <div className="w-full my-4 flex justify-center">
                   <Link href={"#info"}>
                     <Button type="tertiary">Více info</Button>
                   </Link>
                 </div>
-              )}
+              )} */}
               <div>
                 <span className="font-bold">Popis:</span>
                 <span>
