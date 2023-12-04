@@ -3,13 +3,14 @@ import { Content } from "@prismicio/client";
 import Bounded from "../../components/Bounded";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import { WatchesDocument } from "../../../prismicio-types";
+import { ReviewDocument, WatchesDocument } from "../../../prismicio-types";
 import Stars from "@/components/Stars";
 import Button from "@/components/Button";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
 import * as prismic from "@prismicio/client";
+import { ContextProps } from "@/app/layout";
 
 const Card = ({ item }: { item: WatchesDocument }) => {
   const [isHovered, setHover] = useState<boolean>(false);
@@ -92,7 +93,7 @@ export type ListProps = SliceComponentProps<Content.ListSlice>;
  */
 
 interface ListPropsContext extends ListProps {
-  context: { watches?: WatchesDocument[] };
+  context: ContextProps;
 }
 
 const List = ({ slice, context }: ListPropsContext): JSX.Element => {

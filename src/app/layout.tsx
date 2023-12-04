@@ -12,7 +12,7 @@ import { PrismicNextLink, PrismicPreview } from "@prismicio/next";
 
 import { createClient, repositoryName } from "@/prismicio";
 import { useState } from "react";
-import { SettingsDocument } from "../../prismicio-types";
+import { ReviewDocument, SettingsDocument, WatchesDocument } from "../../prismicio-types";
 import Header from "@/components/Header";
 import Head from "next/head";
 import * as prismic from "@prismicio/client";
@@ -28,7 +28,10 @@ export async function generateMetadata() {
     icons: { icon: prismic.asImageSrc(settings.data.favicon) || "" },
   };
 }
-
+export interface ContextProps {
+  watches?: WatchesDocument[];
+  reviews?: ReviewDocument[];
+}
 export default async function RootLayout({
   children,
 }: {
