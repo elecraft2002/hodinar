@@ -1,8 +1,8 @@
 {
-  "id": "text",
+  "id": "reviews",
   "type": "SharedSlice",
-  "name": "Text",
-  "description": "Text",
+  "name": "Reviews",
+  "description": "Reviews",
   "variations": [
     {
       "id": "default",
@@ -16,7 +16,7 @@
           "type": "StructuredText",
           "config": {
             "label": "Text",
-            "placeholder": "Text with rich formatting",
+            "placeholder": "Text above reviews.",
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }

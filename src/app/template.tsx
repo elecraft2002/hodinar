@@ -13,7 +13,7 @@ const richTextComponents: JSXMapSerializer | JSXFunctionSerializer = {
     </h1>
   ),
   heading2: ({ children }) => (
-    <h2 className="mb-2 font-title text-3xl  last:mb-0">{children}</h2>
+    <h2 className="mb-2 font-title text-3xl last:mb-0">{children}</h2>
   ),
   heading3: ({ children }) => (
     <h3 className="mb-2  text-xl font-title last:mb-0">{children}</h3>

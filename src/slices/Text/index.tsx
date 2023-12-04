@@ -17,7 +17,7 @@ const Text = ({ slice }: TextProps): JSX.Element => {
       <Fade delay={500} triggerOnce className="mx-auto grid w-full max-w-prose gap-6">
         <PrismicRichText
           field={slice.primary.text}
-          components={{
+          /* components={{
             heading3: ({ children }) => (
               <p className="text-sm font-semibold uppercase tracking-widest text-slate-300">
                 {children}
@@ -28,7 +28,7 @@ const Text = ({ slice }: TextProps): JSX.Element => {
                 {children}
               </h2>
             ),
-          }}
+          }} */
         />
       </Fade>
     </section>

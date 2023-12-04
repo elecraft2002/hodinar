@@ -763,6 +763,36 @@ type ListSliceVariation = ListSliceDefault;
 export type ListSlice = prismic.SharedSlice<"list", ListSliceVariation>;
 
 /**
+ * Default variation for Reviews Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ReviewsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *Reviews*
+ */
+type ReviewsSliceVariation = ReviewsSliceDefault;
+
+/**
+ * Reviews Shared Slice
+ *
+ * - **API ID**: `reviews`
+ * - **Description**: Reviews
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ReviewsSlice = prismic.SharedSlice<
+  "reviews",
+  ReviewsSliceVariation
+>;
+
+/**
  * Primary content in *Text → Primary*
  */
 export interface TextSliceDefaultPrimary {
@@ -911,6 +941,9 @@ declare module "@prismicio/client" {
       ListSliceDefaultPrimary,
       ListSliceVariation,
       ListSliceDefault,
+      ReviewsSlice,
+      ReviewsSliceVariation,
+      ReviewsSliceDefault,
       TextSlice,
       TextSliceDefaultPrimary,
       TextSliceVariation,
