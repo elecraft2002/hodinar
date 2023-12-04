@@ -17,7 +17,7 @@ const Image = ({ slice }: ImageProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="flex justify-center"
+      className="flex justify-center my-4"
     >
       <Fade triggerOnce delay={500}>
         <PrismicNextImage field={slice.primary.image.Big} />
