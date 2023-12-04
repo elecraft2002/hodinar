@@ -22,6 +22,12 @@ export default async function Page({ params }: { params: Params }) {
   return (
     <>
       <div className="grid md:grid-cols-2">
+        <div className="md:h-screen">
+          <PrismicNextImage
+            field={page.data.image1.medium}
+            className="w-full h-full object-cover"
+          />
+        </div>
         <div className="m-4 md:flex md:items-center">
           {page.data.availability === "Sold" ? (
             <h2 className="text-center w-full font-semibold text-3xl">
@@ -30,12 +36,6 @@ export default async function Page({ params }: { params: Params }) {
           ) : (
             <Form />
           )}
-        </div>
-        <div className="md:h-screen">
-          <PrismicNextImage
-            field={page.data.image1.medium}
-            className="w-full h-full object-cover"
-          />
         </div>
       </div>
     </>
