@@ -11,6 +11,7 @@ import { useState } from "react";
 import Link from "next/link";
 import * as prismic from "@prismicio/client";
 import { ContextProps } from "@/app/layout";
+import { Fade } from "react-awesome-reveal";
 
 const Card = ({ item }: { item: WatchesDocument }) => {
   const [isHovered, setHover] = useState<boolean>(false);
@@ -111,9 +112,11 @@ const List = ({ slice, context }: ListPropsContext): JSX.Element => {
             if (slice.primary.max_watches && i >= slice.primary.max_watches)
               return null;
             return (
-              <li key={i}>
-                <Card item={item} />
-              </li>
+              <Fade key={i} triggerOnce delay={500 + 50 * i}>
+                <li>
+                  <Card item={item} />
+                </li>
+              </Fade>
             );
           })}
         </ul>

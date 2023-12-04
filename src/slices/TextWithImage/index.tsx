@@ -1,9 +1,10 @@
-"use client"
+"use client";
 import Bounded from "@/components/Bounded";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import * as prismic from "@prismicio/client";
+import { Fade } from "react-awesome-reveal";
 
 /**
  * Props for `TextWithImage`.
@@ -28,15 +29,19 @@ const TextWithImage = ({ slice }: TextWithImageProps): JSX.Element => {
             <div className="aspect-h-1 aspect-w-1 bg-slate-100/50" />
           </div>
           {prismic.isFilled.image(slice.primary.image) && (
-            <PrismicNextImage
-              field={slice.primary.image.Medium}
-              sizes="100vw"
-              className="relative w-full"
-            />
+            <Fade triggerOnce delay={200}>
+              <PrismicNextImage
+                field={slice.primary.image.Medium}
+                sizes="100vw"
+                className="relative w-full"
+              />
+            </Fade>
           )}
         </div>
         <div className="max-w-prose self-end leading-relaxed md:col-span-7">
-          <PrismicRichText field={slice.primary.text} />
+          <Fade triggerOnce delay={350}>
+            <PrismicRichText field={slice.primary.text} />
+          </Fade>
         </div>
       </div>
     </Bounded>
