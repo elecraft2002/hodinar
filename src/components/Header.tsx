@@ -13,11 +13,10 @@ export default function Header({ settings }: { settings: SettingsDocument }) {
   const { scrollY } = useScroll();
   const [isAtTop, setTop] = useState<boolean>(true);
   useMotionValueEvent(scrollY, "change", (latest) => {
-
     setTop(latest < 100);
   });
   return (
-    <header className="bg-secondary/10 text-secondary md:px-10 fixed w-screen z-[99999999] backdrop-blur-2xl">
+    <header className="bg-secondary/10 text-secondary md:px-10 fixed w-screen z-[999] backdrop-blur-2xl">
       <nav className={clsx("transition-all", isAtTop && " md:py-5")}>
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link
@@ -25,7 +24,7 @@ export default function Header({ settings }: { settings: SettingsDocument }) {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <PrismicNextImage
-              className="h-8"
+              className="h-8 md:scale-150 md:mr-4"
               field={settings.data.logo.Small}
             />
             <span className="self-center text-2xl font-semibold whitespace-nowrap text-tertiary">

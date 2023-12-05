@@ -9,6 +9,9 @@ import Button from "@/components/Button";
 import { PrismicNextImage } from "@prismicio/next";
 import Link from "next/link";
 import Stars from "@/components/Stars";
+import PrismicGalleryImage from "@/components/PrismicGalleryImage";
+
+
 
 type Params = { uid: string };
 
@@ -26,12 +29,9 @@ export default async function Page({ params }: { params: Params }) {
           <div className="flex flex-col md:flex-row -mx-4">
             <div className="md:flex-1 px-4">
               <div className="h-[460px] rounded-lg   mb-4 overflow-hidden">
-                <PrismicNextImage
-                  field={page.data.image1.Preview}
-                  className="w-full h-full object-cover"
-                />
+                <PrismicGalleryImage field={page.data.image1.Preview} />
               </div>
-              {page.data.availability !== "Sold" && (
+              {/* {page.data.availability !== "Sold" && (
                 <div className="flex -mx-2 mb-4">
                   <Link
                     href={
@@ -41,7 +41,7 @@ export default async function Page({ params }: { params: Params }) {
                     <Button>Mám zájem</Button>
                   </Link>
                 </div>
-              )}
+              )} */}
             </div>
             <div className="md:flex-1 px-4">
               <h2 className="text-2xl font-bold  mb-2">

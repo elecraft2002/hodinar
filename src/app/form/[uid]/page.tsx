@@ -34,7 +34,7 @@ export default async function Page({ params }: { params: Params }) {
               Zboží není k dispozici.
             </h2>
           ) : (
-            <Form />
+            <Form product={prismic.asText(page.data.title)} />
           )}
         </div>
       </div>

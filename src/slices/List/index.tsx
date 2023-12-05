@@ -15,6 +15,26 @@ import { Fade } from "react-awesome-reveal";
 
 const Card = ({ item }: { item: WatchesDocument }) => {
   const [isHovered, setHover] = useState<boolean>(false);
+
+  function cutText(text: string, len: number): string {
+    if (text.length <= len) return text;
+    let out = "";
+    let n = 0;
+    let wordIndex = 0;
+    let words = text.split(" ");
+    while (true) {
+      if (n >= len) break;
+      if (wordIndex) out += " ";
+      for (let i = 0; i < words[wordIndex].length; i++) {
+        const letter = words[wordIndex][i];
+        out += letter;
+        n++;
+      }
+      wordIndex++;
+    }
+    return out + "...";
+  }
+
   return (
     <AnimatePresence>
       <div className="w-full max-w-sm rounded-lg shadow bg-primary transition-all hover:drop-shadow-2xl hover:z-10 hover:-translate-y-2 overflow-hidden">
@@ -60,6 +80,7 @@ const Card = ({ item }: { item: WatchesDocument }) => {
                 {parseInt(item.data.rating) + ".0"}
               </span>
             </div>
+            <p className="mb-4">{cutText(prismic.asText(item.data.description), 100)}</p>
             <div className="flex items-center justify-between">
               <span className="text-3xl font-bold text-gray-900 dark:text-white">
                 {item.data.price}

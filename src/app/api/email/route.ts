@@ -4,7 +4,7 @@ import nodemailer from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
 
 export async function POST(request: NextRequest) {
-  const { email, name, message }: FormData = await request.json();
+  const { email, name, message, tel, product }: FormData = await request.json();
 
   const transport = nodemailer.createTransport({
     service: "gmail",
@@ -22,15 +22,23 @@ export async function POST(request: NextRequest) {
       pass: process.env.MY_PASSWORD,
     },
   });
-  if (email.length > 100 || name.length > 100 || message.length > 1000)
+  if (
+    email.length > 100 ||
+    name.length > 100 ||
+    message.length > 1000 ||
+    tel.length > 20 ||
+    product.length > 200
+  )
     return NextResponse.json({ error: "length" }, { status: 500 });
+
+  const text = `${product + "\n"}${tel + "\n"}${message}`;
 
   const mailOptions: Mail.Options = {
     from: process.env.MY_EMAIL,
     to: process.env.MY_EMAIL,
     // cc: email, (uncomment this line if you want to send a copy to the sender)
     subject: `Message from ${name} (${email})`,
-    text: message,
+    text,
   };
 
   const sendMailPromise = () =>

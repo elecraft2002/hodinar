@@ -5,12 +5,11 @@ import {
   JSXMapSerializer,
   PrismicProvider,
 } from "@prismicio/react";
+import CookieConsent from "react-cookie-consent";
 
 const richTextComponents: JSXMapSerializer | JSXFunctionSerializer = {
   heading1: ({ children }) => (
-    <h1 className="max-w-lg text-6xl mb-8 font-title last:mb-0">
-      {children}
-    </h1>
+    <h1 className="max-w-lg text-6xl mb-8 font-title last:mb-0">{children}</h1>
   ),
   heading2: ({ children }) => (
     <h2 className="mb-2 font-title text-3xl last:mb-0">{children}</h2>
@@ -59,6 +58,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
   return (
     <PrismicProvider richTextComponents={richTextComponents}>
       {children}
+      <CookieConsent>Tato stránka používá soubory Cookies.</CookieConsent>
     </PrismicProvider>
   );
 }
