@@ -67,7 +67,6 @@ export default function Background() {
   }, [x, y]);*/
   const X = useSpring(x, { damping: 10, stiffness: 300 });
   const Y = useSpring(y, { damping: 10, stiffness: 300 });
-  // console.log(X, Y);
   return (
     <StyledBackground>
       <StyledCircle style={{ left: X, top: Y }} />

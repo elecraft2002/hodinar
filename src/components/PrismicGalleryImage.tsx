@@ -18,7 +18,6 @@ import * as prismic from "@prismicio/client";
 import { PrismicNextImage, PrismicNextImageProps } from "@prismicio/next";
 
 export default function PrismicGalleryImage(props: PrismicNextImageProps) {
-  console.log(props.field);
   //   return <PrismicNextImage {...props} className="w-full h-full object-cover" />;
   return (
     <LightGallery

@@ -14,7 +14,6 @@ export type ButtonProps = SliceComponentProps<Content.ButtonSlice>;
  * Component for "Button" Slices.
  */
 const Button = ({ slice }: ButtonProps): JSX.Element => {
-  console.log();
   return (
     <section
       data-slice-type={slice.slice_type}
