@@ -9,10 +9,14 @@ import {
   PrismicText,
 } from "@prismicio/react";
 import { PrismicNextLink, PrismicPreview } from "@prismicio/next";
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { createClient, repositoryName } from "@/prismicio";
 import { useState } from "react";
-import { ReviewDocument, SettingsDocument, WatchesDocument } from "../../prismicio-types";
+import {
+  ReviewDocument,
+  SettingsDocument,
+  WatchesDocument,
+} from "../../prismicio-types";
 import Header from "@/components/Header";
 import Head from "next/head";
 import * as prismic from "@prismicio/client";
@@ -47,6 +51,7 @@ export default async function RootLayout({
         <main className="pt-28">{children}</main>
         <Footer settings={settings} />
         <PrismicPreview repositoryName={repositoryName} />
+        <SpeedInsights />
       </body>
     </html>
   );
