@@ -69,7 +69,7 @@ const Card = ({ item }: { item: WatchesDocument }) => {
             ></div>
           </div>
           <div className="px-5 pb-5">
-            <PrismicNextLink document={item}>
+            <PrismicNextLink document={item} className="text-xl">
               <PrismicRichText field={item.data.title} />
             </PrismicNextLink>
             <div className="flex items-center mt-2.5 mb-5">
@@ -80,7 +80,7 @@ const Card = ({ item }: { item: WatchesDocument }) => {
                 {parseInt(item.data.rating) + ".0"}
               </span>
             </div>
-            <p className="mb-4">{cutText(prismic.asText(item.data.description), 100)}</p>
+            <p className="mb-4 font-thin ">{cutText(prismic.asText(item.data.description), 100)}</p>
             <div className="flex items-center justify-between">
               <span className="text-3xl font-bold text-gray-900 dark:text-white">
                 {item.data.price}
