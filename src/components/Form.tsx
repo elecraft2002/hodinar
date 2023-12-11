@@ -73,7 +73,7 @@ export default /* async */ function Form({ product }: { product?: string }) {
           </div>
           <div className="mb-5">
             <label htmlFor="email" className="mb-3 block text-base font-medium">
-              Telefon (napovinný)
+              Telefon (nepovinný)
             </label>
             <input
               type="tel"
