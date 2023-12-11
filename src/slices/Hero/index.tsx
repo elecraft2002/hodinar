@@ -38,11 +38,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             <ul className="flex flex-wrap gap-4">
               {slice.items.map((item) => (
                 <li key={item.button_label}>
-                  <Button type="primary">
-                    <PrismicNextLink field={item.button_link}>
-                      {item.button_label}
-                    </PrismicNextLink>
-                  </Button>
+                  <PrismicNextLink field={item.button_link}>
+                    <Button type="primary">{item.button_label}</Button>
+                  </PrismicNextLink>
                 </li>
               ))}
             </ul>
