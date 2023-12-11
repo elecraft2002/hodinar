@@ -70,6 +70,10 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | ReviewsSlice
+  | TextWithImageSlice
+  | FeaturesSlice
+  | ImageSlice
   | ListSlice
   | GallerySlice
   | ButtonSlice
@@ -359,6 +363,10 @@ export interface WatchesDocumentDataInfoItem {
 }
 
 type WatchesDocumentDataSlicesSlice =
+  | ReviewsSlice
+  | ImageSlice
+  | FeaturesSlice
+  | TextWithImageSlice
   | GallerySlice
   | TextSlice
   | ButtonSlice

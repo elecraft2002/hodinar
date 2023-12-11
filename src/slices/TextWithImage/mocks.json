@@ -9,13 +9,12 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Cillum adipisicing dolore tempor id officia anim in eiusmod consequat."
+							"text": "Excepteur culpa magna labore veniam laborum eiusmod esse minim. Officia laboris voluptate dolore laboris."
 						}
 					}
 				]
 			},
 			"image": {
-				"__TYPE__": "ImageContent",
 				"origin": {
 					"id": "main",
 					"url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
@@ -33,6 +32,9 @@
 					},
 					"background": "transparent"
 				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {
 					"Medium": {
 						"origin": {
@@ -51,7 +53,9 @@
 								"y": 0
 							},
 							"background": "transparent"
-						}
+						},
+						"credits": null,
+						"alt": null
 					}
 				}
 			}

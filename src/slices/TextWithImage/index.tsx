@@ -5,6 +5,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import * as prismic from "@prismicio/client";
 import { Fade } from "react-awesome-reveal";
+import PrismicGalleryImage from "@/components/PrismicGalleryImage";
 
 /**
  * Props for `TextWithImage`.
@@ -30,7 +31,7 @@ const TextWithImage = ({ slice }: TextWithImageProps): JSX.Element => {
           </div>
           {prismic.isFilled.image(slice.primary.image) && (
             <Fade triggerOnce delay={200}>
-              <PrismicNextImage
+              <PrismicGalleryImage
                 field={slice.primary.image.Medium}
                 sizes="100vw"
                 className="relative w-full"
