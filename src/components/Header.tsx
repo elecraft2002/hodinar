@@ -16,7 +16,7 @@ export default function Header({ settings }: { settings: SettingsDocument }) {
     setTop(latest < 100);
   });
   return (
-    <header className="bg-secondary/10 text-secondary md:px-10 fixed w-screen z-[999] backdrop-blur-2xl">
+    <header className=" text-secondary md:px-10 fixed w-screen z-[999] backdrop-blur-2xl">
       <nav className={clsx("transition-all", isAtTop && " md:py-5")}>
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link

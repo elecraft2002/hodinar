@@ -40,10 +40,13 @@ const Card = ({ item }: { item: WatchesDocument }) => {
       <div className="w-full max-w-sm rounded-lg shadow bg-primary transition-all hover:drop-shadow-2xl hover:z-10 hover:-translate-y-2 overflow-hidden">
         <div className="hover:bg-secondary/5 transition-all">
           <div className="relative">
-            <PrismicNextImage
-              field={item.data.image1.Preview}
-              className="p-4 rounded-lg m-auto"
-            />
+           <div
+                className="p-4 m-auto">
+              <PrismicNextImage
+                field={item.data.image1.Preview}
+                className="rounded-lg"
+              />
+           </div>
             <div className="absolute top-0">
               {isHovered && (
                 <motion.div
@@ -55,10 +58,13 @@ const Card = ({ item }: { item: WatchesDocument }) => {
                     ease: [0, 0.71, 0.2, 1.01],
                   }}
                 >
-                  <PrismicNextImage
-                    field={item.data.image2.Preview}
-                    className="p-4 rounded-lg m-auto"
-                  />
+                  <div
+                      className="p-4 m-auto">
+                    <PrismicNextImage
+                      field={item.data.image2.Preview}
+                      className="rounded-lg "
+                    />
+                  </div>
                 </motion.div>
               )}
             </div>
@@ -133,7 +139,7 @@ const List = ({ slice, context }: ListPropsContext): JSX.Element => {
             if (slice.primary.max_watches && i >= slice.primary.max_watches)
               return null;
             return (
-              <Fade key={i} triggerOnce delay={500 + 50 * i}>
+              <Fade key={i} triggerOnce delay={200 + 50 * i}>
                 <li>
                   <Card item={item} />
                 </li>
