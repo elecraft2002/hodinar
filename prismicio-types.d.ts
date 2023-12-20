@@ -457,6 +457,21 @@ interface WatchesDocumentData {
   availability: prismic.SelectField<"Available" | "Sold", "filled">;
 
   /**
+   * Type field in *Watches*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: klasické
+   * - **API ID Path**: watches.type
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  type: prismic.SelectField<
+    "klasické" | "skeletové" | "vojenské/letecké" | "chronograf" | "jiné",
+    "filled"
+  >;
+
+  /**
    * Info field in *Watches*
    *
    * - **Field Type**: Group

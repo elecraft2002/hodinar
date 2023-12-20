@@ -88,6 +88,21 @@
           "default_value": "Available"
         }
       },
+      "type": {
+        "type": "Select",
+        "config": {
+          "label": "Type",
+          "placeholder": "",
+          "options": [
+            "klasické",
+            "skeletové",
+            "vojenské/letecké",
+            "chronograf",
+            "jiné"
+          ],
+          "default_value": "klasické"
+        }
+      },
       "info": {
         "type": "Group",
         "config": {

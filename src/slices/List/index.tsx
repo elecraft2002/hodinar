@@ -40,13 +40,12 @@ const Card = ({ item }: { item: WatchesDocument }) => {
       <div className="w-full max-w-sm rounded-lg shadow bg-primary transition-all hover:drop-shadow-2xl hover:z-10 hover:-translate-y-2 overflow-hidden">
         <div className="hover:bg-secondary/5 transition-all">
           <div className="relative">
-           <div
-                className="p-4 m-auto">
+            <div className="p-4 m-auto">
               <PrismicNextImage
                 field={item.data.image1.Preview}
                 className="rounded-lg"
               />
-           </div>
+            </div>
             <div className="absolute top-0">
               {isHovered && (
                 <motion.div
@@ -58,8 +57,7 @@ const Card = ({ item }: { item: WatchesDocument }) => {
                     ease: [0, 0.71, 0.2, 1.01],
                   }}
                 >
-                  <div
-                      className="p-4 m-auto">
+                  <div className="p-4 m-auto">
                     <PrismicNextImage
                       field={item.data.image2.Preview}
                       className="rounded-lg "
@@ -86,7 +84,9 @@ const Card = ({ item }: { item: WatchesDocument }) => {
                 {parseInt(item.data.rating) + ".0"}
               </span>
             </div>
-            <p className="mb-4 font-thin ">{cutText(prismic.asText(item.data.description), 100)}</p>
+            <p className="mb-4 font-thin ">
+              {cutText(prismic.asText(item.data.description), 100)}
+            </p>
             <div className="flex items-center justify-between">
               <span className="text-3xl font-bold text-gray-900 dark:text-white">
                 {item.data.price}
@@ -123,21 +123,66 @@ export type ListProps = SliceComponentProps<Content.ListSlice>;
 interface ListPropsContext extends ListProps {
   context: ContextProps;
 }
+export const availability = [
+  { value: "Available", display: "Dostupné" },
+  { value: "Sold", display: "Prodáno" },
+];
 
 const List = ({ slice, context }: ListPropsContext): JSX.Element => {
+  const types = [
+    { value: "klasické", display: "Klasické" },
+    { value: "skeletové", display: "Skeletové" },
+    { value: "vojenské/letecké", display: "Vojenské / Letecké" },
+    { value: "chronograf", display: "Chronograf" },
+    { value: "jiné", display: "Jiné" },
+  ];
+  const [activeTypes, setActiveTypes] = useState<string[]>([]);
+  const handleTypes = (type: string) => {
+    const index = activeTypes.indexOf(type);
+    if (index > -1) {
+      activeTypes.splice(index, 1);
+      setActiveTypes([...activeTypes]);
+    } else {
+      setActiveTypes([...activeTypes, type]);
+    }
+    console.log(activeTypes);
+  };
   return (
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      {/* <span>
-        <PrismicRichText field={slice.primary.description} />
-      </span> */}
+      <div className="filter">
+        <ul className="flex gap-4">
+          {types.map((type, i) => {
+            return (
+              <li key={i}>
+                <div className="flex items-center mb-4">
+                  <input
+                    onChange={() => handleTypes(type.value)}
+                    id={type.value}
+                    type="checkbox"
+                    value=""
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <label
+                    htmlFor={type.value}
+                    className="ms-2 font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    {type.display}
+                  </label>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
       {context.watches && (
         <ul className="flex flex-wrap gap-8 justify-center">
           {context.watches.map((item: WatchesDocument, i: number) => {
             if (slice.primary.max_watches && i >= slice.primary.max_watches)
               return null;
+            if(activeTypes.length===0 || activeTypes.includes(item.data.type))
             return (
               <Fade key={i} triggerOnce delay={200 + 50 * i}>
                 <li>
