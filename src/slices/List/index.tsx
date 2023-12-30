@@ -166,7 +166,7 @@ const List = ({ slice, context }: ListPropsContext): JSX.Element => {
     { value: "jiné", display: "Jiné" },
   ];
   const [activeTypes, setActiveTypes] = useState<string[]>([]);
-  const [isAvailable, setAvailibility] = useState<string | null>(null);
+  const [isAvailable, setAvailibility] = useState<string[]>([]);
   const handleTypes = (type: string) => {
     const index = activeTypes.indexOf(type);
     if (index > -1) {
@@ -176,10 +176,15 @@ const List = ({ slice, context }: ListPropsContext): JSX.Element => {
       setActiveTypes([...activeTypes, type]);
     }
   };
-  const handleAvailibility=(type:string)=>{
-    if(isAvailable===type) setAvailibility(null)
-    
-  }
+  const handleAvailibility = (type: string) => {
+    const index = isAvailable.indexOf(type);
+    if (index > -1) {
+      isAvailable.splice(index, 1);
+      setAvailibility([...isAvailable]);
+    } else {
+      setAvailibility([...isAvailable, type]);
+    }
+  };
   return (
     <Bounded
       data-slice-type={slice.slice_type}
@@ -199,7 +204,7 @@ const List = ({ slice, context }: ListPropsContext): JSX.Element => {
           {availability.map((type, i) => {
             return (
               <li key={i}>
-                <Selection handleEvent={handleTypes} type={type} />
+                <Selection handleEvent={handleAvailibility} type={type} />
               </li>
             );
           })}
@@ -214,13 +219,17 @@ const List = ({ slice, context }: ListPropsContext): JSX.Element => {
               activeTypes.length === 0 ||
               activeTypes.includes(item.data.type)
             )
-              return (
-                <Fade key={i} triggerOnce delay={200 + 50 * i}>
-                  <li>
-                    <Card item={item} />
-                  </li>
-                </Fade>
-              );
+              if (
+                isAvailable.length === 0 ||
+                isAvailable.includes(item.data.availability)
+              )
+                return (
+                  <Fade key={i} triggerOnce delay={200 + 50 * i}>
+                    <li>
+                      <Card item={item} />
+                    </li>
+                  </Fade>
+                );
           })}
         </ul>
       )}
