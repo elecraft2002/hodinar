@@ -1,5 +1,6 @@
 "use client";
 import { ContextProps } from "@/app/layout";
+import Bounded from "@/components/Bounded";
 import Stars from "@/components/Stars";
 import parseDate from "@/utils/parseDate";
 import { Content } from "@prismicio/client";
@@ -22,7 +23,7 @@ interface ReviewsPropsContext extends ReviewsProps {
 
 const Reviews = ({ slice, context }: ReviewsPropsContext): JSX.Element => {
   return (
-    <section
+    <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
@@ -68,7 +69,7 @@ const Reviews = ({ slice, context }: ReviewsPropsContext): JSX.Element => {
           );
         })}
       </ul>
-    </section>
+    </Bounded>
   );
 };
 

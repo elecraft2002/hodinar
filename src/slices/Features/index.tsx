@@ -1,4 +1,5 @@
 "use client"
+import Bounded from "@/components/Bounded";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
@@ -14,7 +15,7 @@ export type FeaturesProps = SliceComponentProps<Content.FeaturesSlice>;
  */
 const Features = ({ slice }: FeaturesProps): JSX.Element => {
   return (
-    <section
+    <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
@@ -46,7 +47,7 @@ const Features = ({ slice }: FeaturesProps): JSX.Element => {
           );
         })}
       </ul>
-    </section>
+    </Bounded>
   );
 };
 

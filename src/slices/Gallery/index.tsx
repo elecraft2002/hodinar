@@ -20,6 +20,7 @@ import "lightgallery/scss/lg-zoom.scss";
 // import plugins if you need
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
+import Bounded from "@/components/Bounded";
 
 /**
  * Props for `Gallery`.
@@ -31,7 +32,7 @@ export type GalleryProps = SliceComponentProps<Content.GallerySlice>;
  */
 const Gallery = ({ slice }: GalleryProps): JSX.Element => {
   return (
-    <section
+    <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="flex justify-center"
@@ -61,7 +62,7 @@ const Gallery = ({ slice }: GalleryProps): JSX.Element => {
           })}
         </LightGallery>
       </ul>
-    </section>
+    </Bounded>
   );
 };
 

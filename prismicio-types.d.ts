@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomepageDocumentDataSlicesSlice =
+  | HeroAnimationSlice
   | ReviewsSlice
   | TextWithImageSlice
   | FeaturesSlice
@@ -821,6 +822,81 @@ type HeroSliceVariation = HeroSliceDefault | HeroSliceHeroFullscreen;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Primary content in *HeroAnimation → Items*
+ */
+export interface HeroAnimationSliceDefaultItem {
+  /**
+   * Text field in *HeroAnimation → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Text...
+   * - **API ID Path**: hero_animation.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * Image field in *HeroAnimation → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_animation.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<"Medium">;
+
+  /**
+   * Button Text field in *HeroAnimation → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_animation.items[].button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *HeroAnimation → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_animation.items[].button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for HeroAnimation Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroAnimationSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<HeroAnimationSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *HeroAnimation*
+ */
+type HeroAnimationSliceVariation = HeroAnimationSliceDefault;
+
+/**
+ * HeroAnimation Shared Slice
+ *
+ * - **API ID**: `hero_animation`
+ * - **Description**: HeroAnimation
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroAnimationSlice = prismic.SharedSlice<
+  "hero_animation",
+  HeroAnimationSliceVariation
+>;
+
+/**
  * Primary content in *Image → Primary*
  */
 export interface ImageSliceDefaultPrimary {
@@ -1078,6 +1154,10 @@ declare module "@prismicio/client" {
       HeroSliceVariation,
       HeroSliceDefault,
       HeroSliceHeroFullscreen,
+      HeroAnimationSlice,
+      HeroAnimationSliceDefaultItem,
+      HeroAnimationSliceVariation,
+      HeroAnimationSliceDefault,
       ImageSlice,
       ImageSliceDefaultPrimary,
       ImageSliceVariation,
