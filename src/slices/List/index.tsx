@@ -128,6 +128,35 @@ export const availability = [
   { value: "Sold", display: "Prodáno" },
 ];
 
+const Selection = ({
+  handleEvent,
+  type,
+}: {
+  handleEvent: (type: string) => void;
+  type: {
+    value: string;
+    display: string;
+  };
+}) => {
+  return (
+    <div className="flex items-center mb-4">
+      <input
+        onChange={() => handleEvent(type.value)}
+        id={type.value}
+        type="checkbox"
+        value=""
+        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+      />
+      <label
+        htmlFor={type.value}
+        className="ms-2 font-medium text-gray-900 dark:text-gray-300"
+      >
+        {type.display}
+      </label>
+    </div>
+  );
+};
+
 const List = ({ slice, context }: ListPropsContext): JSX.Element => {
   const types = [
     { value: "klasické", display: "Klasické" },
@@ -137,6 +166,7 @@ const List = ({ slice, context }: ListPropsContext): JSX.Element => {
     { value: "jiné", display: "Jiné" },
   ];
   const [activeTypes, setActiveTypes] = useState<string[]>([]);
+  const [isAvailable, setAvailibility] = useState<string | null>(null);
   const handleTypes = (type: string) => {
     const index = activeTypes.indexOf(type);
     if (index > -1) {
@@ -145,8 +175,11 @@ const List = ({ slice, context }: ListPropsContext): JSX.Element => {
     } else {
       setActiveTypes([...activeTypes, type]);
     }
-    console.log(activeTypes);
   };
+  const handleAvailibility=(type:string)=>{
+    if(isAvailable===type) setAvailibility(null)
+    
+  }
   return (
     <Bounded
       data-slice-type={slice.slice_type}
@@ -157,21 +190,16 @@ const List = ({ slice, context }: ListPropsContext): JSX.Element => {
           {types.map((type, i) => {
             return (
               <li key={i}>
-                <div className="flex items-center mb-4">
-                  <input
-                    onChange={() => handleTypes(type.value)}
-                    id={type.value}
-                    type="checkbox"
-                    value=""
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label
-                    htmlFor={type.value}
-                    className="ms-2 font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    {type.display}
-                  </label>
-                </div>
+                <Selection handleEvent={handleTypes} type={type} />
+              </li>
+            );
+          })}
+        </ul>
+        <ul className="flex gap-4">
+          {availability.map((type, i) => {
+            return (
+              <li key={i}>
+                <Selection handleEvent={handleTypes} type={type} />
               </li>
             );
           })}
@@ -182,14 +210,17 @@ const List = ({ slice, context }: ListPropsContext): JSX.Element => {
           {context.watches.map((item: WatchesDocument, i: number) => {
             if (slice.primary.max_watches && i >= slice.primary.max_watches)
               return null;
-            if(activeTypes.length===0 || activeTypes.includes(item.data.type))
-            return (
-              <Fade key={i} triggerOnce delay={200 + 50 * i}>
-                <li>
-                  <Card item={item} />
-                </li>
-              </Fade>
-            );
+            if (
+              activeTypes.length === 0 ||
+              activeTypes.includes(item.data.type)
+            )
+              return (
+                <Fade key={i} triggerOnce delay={200 + 50 * i}>
+                  <li>
+                    <Card item={item} />
+                  </li>
+                </Fade>
+              );
           })}
         </ul>
       )}
