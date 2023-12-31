@@ -13,7 +13,7 @@ export type TextProps = SliceComponentProps<Content.TextSlice>;
  */
 const Text = ({ slice }: TextProps): JSX.Element => {
   return (
-    <section className="px-6 py-28 md:px-10">
+    <section className="px-6 py-6 md:px-10">
       <Fade delay={500} triggerOnce className="mx-auto grid w-full max-w-6xl gap-6">
         <PrismicRichText
           field={slice.primary.text}

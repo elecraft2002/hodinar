@@ -80,7 +80,7 @@ const Card = ({ item }: { item: WatchesDocument }) => {
               <ul className="flex items-center space-x-1 rtl:space-x-reverse">
                 <Stars count={parseInt(item.data.rating)} />
               </ul>
-              <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">
+              <span className="text-xs font-semibold px-2.5 py-0.5 rounded ms-3">
                 {parseInt(item.data.rating) + ".0"}
               </span>
             </div>
@@ -88,7 +88,7 @@ const Card = ({ item }: { item: WatchesDocument }) => {
               {cutText(prismic.asText(item.data.description), 100)}
             </p>
             <div className="flex items-center justify-between">
-              <span className="text-3xl font-bold text-gray-900 dark:text-white">
+              <span className="text-3xl font-bold">
                 {item.data.price}
               </span>
             </div>
@@ -145,11 +145,11 @@ const Selection = ({
         id={type.value}
         type="checkbox"
         value=""
-        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        className="w-4 h-4 rounded focus:ring-blue-500focus:ring-2border-gray-600"
       />
       <label
         htmlFor={type.value}
-        className="ms-2 font-medium text-gray-900 dark:text-gray-300"
+        className="ms-2 font-medium"
       >
         {type.display}
       </label>
@@ -191,7 +191,7 @@ const List = ({ slice, context }: ListPropsContext): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <div className="filter">
-        <ul className="flex gap-4">
+        <ul className="flex gap-4 flex-wrap">
           {types.map((type, i) => {
             return (
               <li key={i}>
@@ -200,7 +200,7 @@ const List = ({ slice, context }: ListPropsContext): JSX.Element => {
             );
           })}
         </ul>
-        <ul className="flex gap-4">
+        <ul className="flex gap-4 flex-wrap">
           {availability.map((type, i) => {
             return (
               <li key={i}>
