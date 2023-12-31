@@ -14,7 +14,7 @@ export default function Footer({ settings }: { settings: SettingsDocument }) {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <PrismicNextImage  
-              className="h-8"
+               className="h-8"
               field={settings.data.logo.Small}
             />
             <span className="self-center text-2xl font-semibold whitespace-nowrap text-tertiary">
