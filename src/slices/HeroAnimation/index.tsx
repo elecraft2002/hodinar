@@ -59,8 +59,8 @@ const HeroAnimation = ({ slice }: HeroAnimationProps): JSX.Element => {
           return (
             <SwiperSlide key={i}>
               <div className="lg:w-3/4 m-auto">
-                <article className="grid grid-cols-2 gap-4 md:gap-8 lg:gap-16 h-[80vh] relative">
-                  <div className="flex flex-col justify-center items-end gap-8">
+                <article className="md:grid grid-cols-2 gap-4 md:gap-8 lg:gap-16 h-[80vh] relative">
+                  <div className="z-10 md:z-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:translate-x-0 md:translate-y-0 md:static flex flex-col justify-center items-end gap-8">
                     <span
                       className={clsx(
                         "max-w-lg text-end relative pb-4",
@@ -78,7 +78,7 @@ const HeroAnimation = ({ slice }: HeroAnimationProps): JSX.Element => {
                     <figure className="h-[80vh]">
                       <PrismicNextImage
                         field={item.image.Medium}
-                        className="rounded-lg w-full h-full object-cover"
+                        className="rounded-lg w-full h-full object-cover opacity-30 md:opacity-100"
                       />
                     </figure>
                   </div>
