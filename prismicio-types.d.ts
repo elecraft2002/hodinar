@@ -274,6 +274,31 @@ export interface SettingsDocumentDataNavigationItem {
 }
 
 /**
+ * Item in *Settings → Socials*
+ */
+export interface SettingsDocumentDataSocialsItem {
+  /**
+   * Icon field in *Settings → Socials*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.socials[].icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
+   * Link field in *Settings → Socials*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link to social media
+   * - **API ID Path**: settings.socials[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
  * Content for Settings documents
  */
 interface SettingsDocumentData {
@@ -331,6 +356,17 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   tel: prismic.KeyTextField;
+
+  /**
+   * Socials field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.socials[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  socials: prismic.GroupField<Simplify<SettingsDocumentDataSocialsItem>>;
 }
 
 /**
@@ -1140,6 +1176,7 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
+      SettingsDocumentDataSocialsItem,
       WatchesDocument,
       WatchesDocumentData,
       WatchesDocumentDataInfoItem,

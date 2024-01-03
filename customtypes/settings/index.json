@@ -70,6 +70,31 @@
           "label": "Tel",
           "placeholder": ""
         }
+      },
+      "socials": {
+        "type": "Group",
+        "config": {
+          "label": "Socials",
+          "fields": {
+            "icon": {
+              "type": "Image",
+              "config": {
+                "label": "Icon",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "Link to social media",
+                "allowTargetBlank": true,
+                "select": null
+              }
+            }
+          }
+        }
       }
     }
   }
