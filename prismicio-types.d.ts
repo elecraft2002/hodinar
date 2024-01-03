@@ -320,6 +320,17 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   favicon: prismic.ImageField<never>;
+
+  /**
+   * Tel field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.tel
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tel: prismic.KeyTextField;
 }
 
 /**

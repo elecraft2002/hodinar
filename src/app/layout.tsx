@@ -48,7 +48,7 @@ export default async function RootLayout({
       <body className="bg-primary text-secondary min-h-screen flex flex-col justify-between">
         <Header settings={settings} />
         {/* <Background/> */}
-        <main className="pt-28">{children}</main>
+        <main className="pt-28 font-normal">{children}</main>
         <Footer settings={settings} />
         <PrismicPreview repositoryName={repositoryName} />
         <SpeedInsights />

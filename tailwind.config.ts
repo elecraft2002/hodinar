@@ -14,6 +14,7 @@ export default {
         sans: "'Montserrat', sans-serif",
         // title: "'Montserrat', sans-serif",
         title: ["Abril Fatface", "serif"],
+        normal: "Times New Roman",
       },
       colors: {
         primary: "#010506",

@@ -17,3 +17,8 @@ body {
     font-weight: 700;
   }
 }
+
+@font-face { 
+  font-family: "Times New Roman";
+  src: url("../../public/assets/Times New Roman/times new roman.ttf"); 
+}

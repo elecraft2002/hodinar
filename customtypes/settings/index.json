@@ -63,6 +63,13 @@
           },
           "thumbnails": []
         }
+      },
+      "tel": {
+        "type": "Text",
+        "config": {
+          "label": "Tel",
+          "placeholder": ""
+        }
       }
     }
   }
